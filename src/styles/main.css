@@ -1,0 +1,381 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+  background-color: black;
+}
+.main-content {
+  width: 100vw;
+}
+
+h1,
+h2,
+h3 {
+  color: white;
+  text-align: center;
+}
+
+label {
+  color: white;
+  text-align: center;
+  align-self: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  background-color: #555;
+  animation: 5s show ease;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.div-for-loader {
+  height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #3a00e5;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+.loader-container {
+  background-color: #ff8000;
+  margin: 20px;
+  font-size: 10px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  vertical-align: top;
+}
+
+.loader-1 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  margin: -25px auto 0;
+  border-radius: 50%;
+  background: #ffffff;
+  background: -moz-linear-gradient(
+    left,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  background: -webkit-linear-gradient(
+    left,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 50%);
+  background: -ms-linear-gradient(
+    left,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  background: linear-gradient(
+    to right,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  position: relative;
+  -webkit-animation: loader-1 1.5s infinite linear;
+  animation: loader-1 1.5s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.loader-1:before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  border-radius: 100% 0 0 0;
+}
+
+.loader-1:after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ff8000;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@-webkit-keyframes loader-1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+img {
+  width: 300px;
+  height: 200px;
+}
+
+input[type="file"] {
+  width: 120px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: "Обрати фото 📸";
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 12px;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.checkbox {
+  display: flex;
+  gap: 5px;
+}
+
+.main-content {
+  min-height: calc(90vh - 15vh);
+  background-color: rgb(0, 0, 0);
+}
+
+.div-open-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.img-open-bar {
+  height: 2em;
+  cursor: pointer;
+}
+
+.input-error-label {
+  margin: 0;
+  padding-top: 5px;
+  height: 1em;
+  font-size: 12px;
+  color: red;
+  text-align: center;
+}
+
+.conteiner-file-input {
+  width: 125px;
+  height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.conteiner-file-input img {
+  width: 125px;
+  height: 125px;
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.1s linear;
+  border-radius: 50%;
+}
+
+.conteiner-file-input:hover, .conteiner-file-input img:hover {
+ opacity: 0.5;
+}
+
+
+.conteiner-file-input label {
+  opacity: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav {
+  display: block;
+}
+.nav-mobile {
+  display: none;
+}
+
+.header-empty {
+  height: 90px;
+  width: 100%;
+  display: none;
+}
+
+.copy-toast {
+  display: none;
+}
+
+.copy-toast-active {
+  display: block;
+  position: fixed;
+  width: 120px;
+  height: 40px;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  background: rgb(41 41 41 / 81%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 10%;
+  left: calc(50% - 60px);
+  z-index: 10000;
+  cursor: default;
+  animation: opening 1.5s;
+  animation-iteration-count: 1;
+}
+
+.booking-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.addres {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 984px) {
+  .header-empty {
+    display: block;
+  }
+}
+
+@media (max-width: 850px) {
+  .nav {
+    display: none;
+  }
+  .nav-mobile {
+    display: block;
+    height: 100vw;
+  }
+}
+
