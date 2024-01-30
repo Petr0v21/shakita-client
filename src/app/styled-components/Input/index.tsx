@@ -68,6 +68,19 @@ export const StyledContainer = styled.div<InputProps & { hasValue: boolean }>`
       color: transparent;
     }
 
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+    }
+
+    &:-internal-autofill-selected {
+      appearance: menulist-button;
+      background-image: none !important;
+      background-color: -internal-light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;
+      color: fieldtext !important;
+    }
+
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
