@@ -71,6 +71,7 @@ export const StyledContainer = styled.div<InputProps & { hasValue: boolean }>`
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
+      -webkit-text-fill-color: white;
       -webkit-box-shadow: 0 0 0px 1000px #000 inset;
     }
 
