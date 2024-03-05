@@ -56,6 +56,8 @@ const Navigator: React.FC<{ type: 'desktop' | 'mobile' }> = ({ type }) => {
           className="link-1"
           onMouseEnter={() => setHoveredCoal('coal-1')}
           onMouseLeave={() => setHoveredCoal(undefined)}
+          href="https://www.carrotquest.io/blog/wp-content/uploads/2019/08/discounts.png"
+          target="_blank"
         >
           <div className="link-content">
             <span>НАША СИСТЕМА ЛОЯЛЬНОСТИ</span>
@@ -74,6 +76,8 @@ const Navigator: React.FC<{ type: 'desktop' | 'mobile' }> = ({ type }) => {
           className="link-2"
           onMouseEnter={() => setHoveredCoal('coal-2')}
           onMouseLeave={() => setHoveredCoal(undefined)}
+          href="https://vizitka.com/storage/main/attachments/c-7/s-8/widgets/0080e7e40327f40468b8915ae7bce010a1271525191a2ba09f75a54bbe6b0b2154c2de79/id66138-ru.jpg"
+          target="_blank"
         >
           <div className="link-content">
             <span>Полное меню со всеми услугами</span>
@@ -92,6 +96,8 @@ const Navigator: React.FC<{ type: 'desktop' | 'mobile' }> = ({ type }) => {
           className="link-3"
           onMouseEnter={() => setHoveredCoal('coal-3')}
           onMouseLeave={() => setHoveredCoal(undefined)}
+          href="https://t.me/shakita_hookah_channel"
+          target="_blank"
         >
           <div className="link-content">
             <span>Новости и Акции</span>

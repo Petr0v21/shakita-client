@@ -1,34 +1,21 @@
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
-export type MakeEmpty<
-  T extends { [key: string]: unknown },
-  K extends keyof T,
-> = { [_ in K]?: never };
-export type Incremental<T> =
-  | T
-  | {
-      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
-    };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
   /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
-  DateTime: { input: any; output: any };
+  DateTime: { input: any; output: any; }
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
-  JSON: { input: any; output: any };
+  JSON: { input: any; output: any; }
 };
 
 export type AnalyticsApplicationsType = {
@@ -93,7 +80,7 @@ export type Application = {
 export enum ApplicationStatus {
   Approved = 'APPROVED',
   Pending = 'PENDING',
-  Rejected = 'REJECTED',
+  Rejected = 'REJECTED'
 }
 
 export type ApplicationType = {
@@ -133,36 +120,41 @@ export type Bonus = {
 export enum BonusLevelType {
   Junior = 'JUNIOR',
   Middle = 'MIDDLE',
-  Senior = 'SENIOR',
+  Senior = 'SENIOR'
 }
 
 export type BonusTicket = {
   __typename?: 'BonusTicket';
   activeTill?: Maybe<Scalars['DateTime']['output']>;
   code: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
   id: Scalars['String']['output'];
   isActive: Scalars['Boolean']['output'];
   ticketType: BonusTicketType;
+  updatedAt: Scalars['DateTime']['output'];
 };
 
 export enum BonusTicketType {
   Const = 'CONST',
-  Disposable = 'DISPOSABLE',
+  Disposable = 'DISPOSABLE'
 }
 
 export type BonusTicketWholeType = {
   __typename?: 'BonusTicketWholeType';
   activeTill?: Maybe<Scalars['DateTime']['output']>;
-  bonus: Bonus;
+  bonus?: Maybe<Bonus>;
   code: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
   id: Scalars['String']['output'];
   isActive: Scalars['Boolean']['output'];
   ticketType: BonusTicketType;
+  updatedAt: Scalars['DateTime']['output'];
+  user?: Maybe<User>;
 };
 
 export enum BonusValueType {
   Percent = 'PERCENT',
-  Point = 'POINT',
+  Point = 'POINT'
 }
 
 export type Mutation = {
@@ -181,20 +173,25 @@ export type Mutation = {
   logout: SuccessOutput;
   register: Tokens;
   resetPasswordCode: SuccessOutput;
+  updateBonus?: Maybe<SuccessOutput>;
+  updateBonusTicket?: Maybe<SuccessOutput>;
   updateMe: SuccessOutput;
   updateMyOneApplication: SuccessOutput;
   updateOneApplication: SuccessOutput;
   updateOneUser: SuccessOutput;
 };
 
+
 export type MutationActivateBonusArgs = {
   bonusTicketId: Scalars['String']['input'];
   userId: Scalars['String']['input'];
 };
 
+
 export type MutationAuthGoogleArgs = {
   token: Scalars['String']['input'];
 };
+
 
 export type MutationCreateBonusArgs = {
   asset: Scalars['String']['input'];
@@ -207,6 +204,7 @@ export type MutationCreateBonusArgs = {
   valueType: BonusValueType;
 };
 
+
 export type MutationCreateBonusTicketArgs = {
   activeTill?: InputMaybe<Scalars['DateTime']['input']>;
   bonusId: Scalars['String']['input'];
@@ -214,6 +212,7 @@ export type MutationCreateBonusTicketArgs = {
   ticketType?: InputMaybe<BonusTicketType>;
   userId: Scalars['String']['input'];
 };
+
 
 export type MutationCreateOneApplicationArgs = {
   date: Scalars['DateTime']['input'];
@@ -228,6 +227,7 @@ export type MutationCreateOneApplicationArgs = {
   telegram?: InputMaybe<Scalars['String']['input']>;
 };
 
+
 export type MutationCreateOneUserArgs = {
   email?: InputMaybe<Scalars['String']['input']>;
   enable_notifications?: InputMaybe<Scalars['Boolean']['input']>;
@@ -241,42 +241,74 @@ export type MutationCreateOneUserArgs = {
   verified_email?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+
 export type MutationDeleteBonusArgs = {
   id: Scalars['String']['input'];
 };
+
 
 export type MutationDeleteBonusTicketArgs = {
   id: Scalars['String']['input'];
 };
 
+
 export type MutationDeleteOneApplicationArgs = {
   id: Scalars['String']['input'];
 };
+
 
 export type MutationDeleteOneUserArgs = {
   id: Scalars['String']['input'];
 };
 
+
 export type MutationGetCodeArgs = {
   email: Scalars['String']['input'];
 };
+
 
 export type MutationLogoutArgs = {
   token: Scalars['String']['input'];
 };
 
+
 export type MutationRegisterArgs = {
   email: Scalars['String']['input'];
+  name: Scalars['String']['input'];
   password: Scalars['String']['input'];
   phone: Scalars['String']['input'];
-  name: Scalars['String']['input'];
 };
+
 
 export type MutationResetPasswordCodeArgs = {
   code: Scalars['String']['input'];
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
 };
+
+
+export type MutationUpdateBonusArgs = {
+  asset?: InputMaybe<Scalars['String']['input']>;
+  condition?: InputMaybe<Scalars['Float']['input']>;
+  count?: InputMaybe<Scalars['Float']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['String']['input'];
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<BonusLevelType>;
+  payload?: InputMaybe<Scalars['JSON']['input']>;
+  valueType?: InputMaybe<BonusValueType>;
+};
+
+
+export type MutationUpdateBonusTicketArgs = {
+  activeTill?: InputMaybe<Scalars['DateTime']['input']>;
+  bonusId?: InputMaybe<Scalars['String']['input']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['String']['input'];
+  ticketType?: InputMaybe<BonusTicketType>;
+  userId?: InputMaybe<Scalars['String']['input']>;
+};
+
 
 export type MutationUpdateMeArgs = {
   email?: InputMaybe<Scalars['String']['input']>;
@@ -293,6 +325,7 @@ export type MutationUpdateMeArgs = {
   verified_email?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+
 export type MutationUpdateMyOneApplicationArgs = {
   date?: InputMaybe<Scalars['DateTime']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
@@ -307,6 +340,7 @@ export type MutationUpdateMyOneApplicationArgs = {
   telegram?: InputMaybe<Scalars['String']['input']>;
 };
 
+
 export type MutationUpdateOneApplicationArgs = {
   date?: InputMaybe<Scalars['DateTime']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
@@ -320,6 +354,7 @@ export type MutationUpdateOneApplicationArgs = {
   status?: InputMaybe<ApplicationStatus>;
   telegram?: InputMaybe<Scalars['String']['input']>;
 };
+
 
 export type MutationUpdateOneUserArgs = {
   email?: InputMaybe<Scalars['String']['input']>;
@@ -342,7 +377,9 @@ export type Query = {
   findApplications?: Maybe<Array<Application>>;
   findApplicationsByDate?: Maybe<Array<Application>>;
   findApplicationsHistory?: Maybe<Array<Application>>;
+  findBonus?: Maybe<Array<Bonus>>;
   findOneApplication?: Maybe<ApplicationType>;
+  findOneBonus?: Maybe<Bonus>;
   findOneUser?: Maybe<UserType>;
   findUsers?: Maybe<Array<User>>;
   getActualData: AnalyticsWithAverageType;
@@ -352,15 +389,17 @@ export type Query = {
   getCustomData: AnalyticsCustomRangeType;
   getHistoryData: AnalyticsHistoryType;
   getMe: UserType;
-  getTicket?: Maybe<BonusTicket>;
+  getTicket?: Maybe<BonusTicketWholeType>;
   login: Tokens;
   refresh: Tokens;
 };
+
 
 export type QueryCheckCodeArgs = {
   code: Scalars['String']['input'];
   email: Scalars['String']['input'];
 };
+
 
 export type QueryFindApplicationsArgs = {
   date_from?: InputMaybe<Scalars['DateTime']['input']>;
@@ -372,21 +411,42 @@ export type QueryFindApplicationsArgs = {
   take?: InputMaybe<Scalars['Float']['input']>;
 };
 
+
 export type QueryFindApplicationsByDateArgs = {
   date: Scalars['DateTime']['input'];
 };
+
 
 export type QueryFindApplicationsHistoryArgs = {
   email: Scalars['String']['input'];
 };
 
+
+export type QueryFindBonusArgs = {
+  asset?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<BonusLevelType>;
+  skip?: InputMaybe<Scalars['Float']['input']>;
+  take?: InputMaybe<Scalars['Float']['input']>;
+  valueType?: InputMaybe<BonusValueType>;
+};
+
+
 export type QueryFindOneApplicationArgs = {
   id: Scalars['String']['input'];
 };
 
+
+export type QueryFindOneBonusArgs = {
+  id: Scalars['String']['input'];
+};
+
+
 export type QueryFindOneUserArgs = {
   id: Scalars['String']['input'];
 };
+
 
 export type QueryFindUsersArgs = {
   contact?: InputMaybe<Scalars['String']['input']>;
@@ -397,15 +457,18 @@ export type QueryFindUsersArgs = {
   take?: InputMaybe<Scalars['Float']['input']>;
 };
 
+
 export type QueryGetCorrelationApplicationsDataArgs = {
   endOf?: InputMaybe<Scalars['DateTime']['input']>;
   startOf?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
+
 export type QueryGetCustomDataArgs = {
   endOfMonth: Scalars['DateTime']['input'];
   startOfMonth: Scalars['DateTime']['input'];
 };
+
 
 export type QueryGetHistoryDataArgs = {
   endOf?: InputMaybe<Scalars['DateTime']['input']>;
@@ -413,14 +476,17 @@ export type QueryGetHistoryDataArgs = {
   startOf?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
+
 export type QueryGetTicketArgs = {
   code: Scalars['String']['input'];
 };
+
 
 export type QueryLoginArgs = {
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
 };
+
 
 export type QueryRefreshArgs = {
   token: Scalars['String']['input'];
@@ -476,7 +542,7 @@ export enum UserRole {
   Blocked = 'blocked',
   Manager = 'manager',
   SuperManager = 'super_manager',
-  User = 'user',
+  User = 'user'
 }
 
 export type UserType = {

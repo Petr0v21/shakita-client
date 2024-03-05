@@ -12,7 +12,8 @@ export const StyledHistory = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 1em;
-    overflow-y: scroll;
+    max-height: 420px;
+    overflow-y: auto;
   }
   @media (max-width: 984px) {
     border-left: 0;

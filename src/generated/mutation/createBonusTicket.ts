@@ -33,4 +33,6 @@ export type createBonusTicketOutput = {
 	ticketType?: boolean, 
 	activeTill?: boolean, 
 	isActive?: boolean, 
+	createdAt?: boolean, 
+	updatedAt?: boolean, 
 }

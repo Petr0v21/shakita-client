@@ -5,7 +5,7 @@ import Kozel from '@images/kozel.png';
 import SmokeLeft from '@images/left-smoke.png';
 import SmokeRight from '@images/right-smoke.png';
 import { Link } from 'react-router-dom';
-import OwnerIcon from '@images/owner.png';
+import OwnerIcon from '@images/partner.png';
 
 const MainPage: React.FC = () => {
   return (
@@ -100,7 +100,7 @@ const MainPage: React.FC = () => {
               <img src={OwnerIcon} alt="avatar" />
               <div>
                 <h4>
-                  <strong>Айк Лазарян</strong>
+                  <strong>Александр Петров</strong>
                 </h4>
                 <span>
                   Цель этого мира — показать всю свою глубину и необъятность,

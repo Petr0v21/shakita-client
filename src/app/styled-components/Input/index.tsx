@@ -78,7 +78,10 @@ export const StyledContainer = styled.div<InputProps & { hasValue: boolean }>`
     &:-internal-autofill-selected {
       appearance: menulist-button;
       background-image: none !important;
-      background-color: -internal-light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;
+      background-color: -internal-light-dark(
+        rgb(232, 240, 254),
+        rgba(70, 90, 126, 0.4)
+      ) !important;
       color: fieldtext !important;
     }
 

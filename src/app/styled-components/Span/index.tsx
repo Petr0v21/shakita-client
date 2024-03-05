@@ -61,23 +61,19 @@ export const SpanComponent: React.FC<{
         console.error(err);
       });
   };
-  const navigate = useNavigate();
   return (
     <>
       <div className={`copy-toast${isCopied ? '-active' : ''}`}>Copied!</div>
       <StyledSpan priority={priority} url={!!url}>
-        {text.split(' ').map((item, index) =>
-          item === value ? (
-            <strong
-              key={text + item + index}
-              onClick={url ? () => navigate(url) : undefined}
-            >
-              {item}
-            </strong>
-          ) : (
-            item + ' '
-          ),
-        )}
+        {text
+          .split(' ')
+          .map((item, index) =>
+            item === value ? (
+              <strong key={text + item + index}>{item}</strong>
+            ) : (
+              item + ' '
+            ),
+          )}
         <img alt="copy" src={CopyIcon} onClick={() => copyText(value)} />
       </StyledSpan>
     </>

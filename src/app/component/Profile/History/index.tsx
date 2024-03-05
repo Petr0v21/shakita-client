@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ApplicationStatus } from '../../../../types';
 import { StyledPill } from '@styled/Pill';
 import { StyledHistory } from '@styled/History';
 import { Application } from '@/generated/types';
+import ModalContext from '@/context/ModalContext';
+import ApplicationForm from '@component/Application';
 
 const UserHistory: React.FC<{ applications: Application[] }> = ({
   applications,
 }) => {
+  const modal = useContext(ModalContext);
   return (
     <StyledHistory>
       <h3>History</h3>
       <div className="history">
         {applications && applications.length ? (
-          applications.slice(0, 5).map((application) => {
+          applications.map((application) => {
             let color = 'red';
             switch (application.status) {
               case ApplicationStatus.Approved:
@@ -26,7 +29,15 @@ const UserHistory: React.FC<{ applications: Application[] }> = ({
                 break;
             }
             return (
-              <StyledPill key={'history' + application.id}>
+              <StyledPill
+                key={'history' + application.id}
+                onClick={() => {
+                  modal?.open(
+                    <ApplicationForm application={application} />,
+                    'center',
+                  );
+                }}
+              >
                 <div className="content">
                   <h4>
                     {application.date

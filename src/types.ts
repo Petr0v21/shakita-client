@@ -32,6 +32,8 @@ export type StyledBookType = {
   places: PlaceType[];
   placesActive: PlaceBookedType[];
   choosedPlaces: string;
+  width?: string;
+  height?: string;
 };
 
 export type ApplicationType = {
@@ -110,3 +112,9 @@ export enum ApplicationStatus {
   Pending = 'PENDING',
   Rejected = 'REJECTED',
 }
+
+export type DrawType = {
+  name: string;
+  id: string;
+  dataHTML: string;
+};

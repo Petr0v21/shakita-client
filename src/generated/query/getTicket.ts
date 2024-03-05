@@ -25,4 +25,8 @@ export type getTicketOutput = {
 	ticketType?: boolean, 
 	activeTill?: boolean, 
 	isActive?: boolean, 
+	createdAt?: boolean, 
+	updatedAt?: boolean, 
+	bonus?: boolean, 
+	user?: boolean, 
 }

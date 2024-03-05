@@ -67,6 +67,8 @@ type BonusTicket {
   ticketType: BonusTicketType!
   activeTill: DateTime
   isActive: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 enum BonusTicketType {
@@ -114,22 +116,16 @@ enum UserRole {
   blocked
 }
 
-type Tokens {
-  accessToken: String!
-  refreshToken: String!
-}
-
-type SuccessOutput {
-  success: Boolean!
-}
-
 type BonusTicketWholeType {
   id: String!
   code: String!
   ticketType: BonusTicketType!
   activeTill: DateTime
   isActive: Boolean!
-  bonus: Bonus!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  bonus: Bonus
+  user: User
 }
 
 type UserType {
@@ -152,6 +148,15 @@ type UserType {
   sessions: [Session!]
   applications: [Application!]
   bonusTickets: [BonusTicketWholeType!]
+}
+
+type SuccessOutput {
+  success: Boolean!
+}
+
+type Tokens {
+  accessToken: String!
+  refreshToken: String!
 }
 
 type ApplicationType {
@@ -211,9 +216,11 @@ type Query {
   findOneUser(id: String!): UserType
   findUsers(skip: Float = 0, take: Float = 15, id: String, name: String, contact: String, role: UserRole): [User!]
   getMe: UserType!
+  getTicket(code: String!): BonusTicketWholeType
+  findBonus(skip: Float = 0, take: Float = 15, id: String, valueType: BonusValueType, level: BonusLevelType, isActive: Boolean, asset: String): [Bonus!]
+  findOneBonus(id: String!): Bonus
   login(email: String!, password: String!): Tokens!
   refresh(token: String!): Tokens!
-  getTicket(code: String!): BonusTicket
   findOneApplication(id: String!): ApplicationType
   findApplicationsByDate(date: DateTime!): [Application!]
   findApplications(skip: Float = 0, take: Float = 15, id: String, place: String, date_from: DateTime, date_to: DateTime, status: ApplicationStatus): [Application!]
@@ -232,14 +239,16 @@ type Mutation {
   deleteOneUser(id: String!): SuccessOutput!
   updateOneUser(id: String!, email: String, phone: String, telegram: String, instagram: String, enable_notifications: Boolean, isFullAuth: Boolean, verified_email: Boolean, picture: String, name: String, role: UserRole, password: String): SuccessOutput!
   updateMe(id: String!, email: String, phone: String, telegram: String, instagram: String, enable_notifications: Boolean, isFullAuth: Boolean, verified_email: Boolean, picture: String, name: String, role: UserRole, password: String): SuccessOutput!
-  register(email: String!, password: String!, phone: String!): Tokens!
-  authGoogle(token: String!): Tokens!
-  logout(token: String!): SuccessOutput!
   createBonus(count: Float!, asset: String!, description: String!, condition: Float, level: BonusLevelType, valueType: BonusValueType!, payload: JSON, isActive: Boolean): Bonus
   deleteBonus(id: String!): SuccessOutput
   createBonusTicket(code: String!, ticketType: BonusTicketType, activeTill: DateTime, bonusId: String!, userId: String!): BonusTicket
+  updateBonus(count: Float, asset: String, description: String, condition: Float, level: BonusLevelType, valueType: BonusValueType, payload: JSON, isActive: Boolean, id: String!): SuccessOutput
+  updateBonusTicket(code: String, ticketType: BonusTicketType, activeTill: DateTime, bonusId: String, userId: String, id: String!): SuccessOutput
   deleteBonusTicket(id: String!): SuccessOutput
   activateBonus(userId: String!, bonusTicketId: String!): SuccessOutput
+  register(name: String!, email: String!, password: String!, phone: String!): Tokens!
+  authGoogle(token: String!): Tokens!
+  logout(token: String!): SuccessOutput!
   updateMyOneApplication(id: String!, place: String, date: DateTime, status: ApplicationStatus, name: String, phone: String, telegram: String, instagram: String, email: String, description: String, enable_notification: Boolean): SuccessOutput!
   createOneApplication(place: String!, date: DateTime!, name: String!, phone: String, telegram: String, instagram: String, email: String!, description: String, enable_notification: Boolean! = true, status: ApplicationStatus): Application
   deleteOneApplication(id: String!): SuccessOutput!

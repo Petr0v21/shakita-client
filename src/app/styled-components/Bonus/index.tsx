@@ -41,6 +41,15 @@ export const StyledPersonalBonus = styled.div`
     text-align: center;
   }
 
+  .all-bonuses {
+    margin-top: 1em;
+    max-width: 840px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+  }
+
   .advice {
     margin-top: 4em;
     max-width: 840px;
@@ -91,6 +100,8 @@ export const StyledBonusPopUp = styled.div`
   border-radius: 12px;
   background: rgb(18, 18, 18);
   color: white;
+  max-height: calc(100vh - 12em);
+  overflow-y: auto;
   .qr-code {
     width: 280px;
     height: 280px;

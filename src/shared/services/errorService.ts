@@ -17,7 +17,7 @@ export class ErrorService {
       this.errCode = error.response?.statusCode;
       this.errMessage = error.response?.message;
       console.error(error);
-      console.log(error);
+      console.error(error);
       const currentStaticError = this.errMessagesStatic.find((errValue) =>
         error.toString().includes(errValue),
       );

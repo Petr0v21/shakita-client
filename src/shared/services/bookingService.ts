@@ -1,8 +1,11 @@
 import { createOneApplication } from '../../generated/mutation/createOneApplication';
+import { updateMyOneApplication } from '../../generated/mutation/updateMyOneApplication';
 import { findApplicationsByDate } from '../../generated/query/findApplicationsByDate';
 import {
   MutationCreateOneApplicationArgs,
+  MutationUpdateMyOneApplicationArgs,
   QueryFindApplicationsByDateArgs,
+  SuccessOutput,
 } from '../../generated/types';
 import { query } from '../query';
 export class BookingService {
@@ -34,6 +37,16 @@ export class BookingService {
       data,
     );
     return res;
+  }
+
+  async update(data: MutationUpdateMyOneApplicationArgs) {
+    const res = await query(
+      updateMyOneApplication({
+        success: true,
+      }),
+      data,
+    );
+    return res as SuccessOutput | null;
   }
 }
 
